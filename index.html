@@ -1,15 +1,340 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<!doctype html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>[CHANGE THIS TITLE]</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nature — The Physical Universe</title>
+  <style>
+    /* ---------- Embedded CSS (single file) ---------- */
+    :root{
+      --frame-width:820px;
+      --paper:#f0e6c3;
+      --bg:#5a5a5a;
+      --accent:#cc5a2c;
+      --sidebar-bg:#dfc36b;
+      --see-title-bg:#7f7a5a;
+      --title-yellow:#f6d86a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.45;
+      padding: 30px 18px;
+    }
+
+    .page-bg { display:flex; justify-content:center; }
+    .frame {
+      width: var(--frame-width);
+      border: 6px solid #ececec;
+      background: var(--paper);
+      box-shadow: 0 8px 0 rgba(0,0,0,0.25);
+      overflow: hidden;
+    }
+
+    /* ---------- Header ---------- */
+    .site-header { position: relative; display:block; }
+    /* exact header height tuned to match the sample */
+    .header-wrap { height: 120px; width:100%; display:block; overflow:hidden; }
+
+    /* The header is drawn as an inline SVG (scales responsively).
+       Title text is positioned with CSS for crisp rendering */
+    .header-svg { display:block; width:100%; height:100%; }
+
+    /* Title block on the left */
+    .header-title {
+      position: absolute;
+      left: 40px;
+      top: 18px;
+      color: white;
+      pointer-events: none;
+      font-family: "Georgia", "Times New Roman", serif;
+      -webkit-font-smoothing: antialiased;
+      text-shadow: 0 2px 0 rgba(0,0,0,0.45);
+    }
+    .header-title .big {
+      display:block;
+      font-size:46px;
+      letter-spacing:20px; /* large spacing like image */
+      font-weight:700;
+      line-height:0.9;
+    }
+    .header-title .subtitle {
+      display:block;
+      margin-top:8px;
+      color: var(--title-yellow);
+      font-size:12px;
+      letter-spacing:1.8px;
+      font-weight:700;
+    }
+
+    /* thin decorative strip under the header */
+    .seam { height: 26px; width:100%; display:block; overflow:hidden; }
+
+    /* ---------- Content (main + sidebar) ---------- */
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 18px;
+      padding: 20px 22px 28px 22px;
+    }
+
+    .main {
+      background: linear-gradient(#efe6c1, #efe6c1);
+      padding: 18px 22px;
+      border-right: 1px dotted rgba(0,0,0,0.12);
+    }
+    .section-title {
+      color: var(--accent);
+      letter-spacing: 4px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .lead { color: #4a4a4a; margin-bottom: 14px; }
+    .main h3 {
+      color: #b24f29;
+      margin-top: 18px;
+      margin-bottom: 10px;
+    }
+    .main p { margin-bottom: 12px; color: #3e3e3e; font-size: 15px; }
+
+    .sidebar { padding: 18px; }
+    .see-also {
+      background: var(--sidebar-bg);
+      padding: 14px;
+      border-radius: 2px;
+      box-shadow: inset 0 -5px 0 rgba(0,0,0,0.04);
+    }
+    .see-title {
+      background: var(--see-title-bg);
+      color: #fff;
+      padding: 8px 10px;
+      font-size: 15px;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .block { margin-bottom: 12px; }
+    .block strong { display:block; margin-bottom: 6px; color:#6a5b3a; }
+    .see-also ul { list-style: square inside; margin-left: 0; }
+    .see-also a { color: #0b4c7a; text-decoration: none; font-size: 14px; }
+    .see-also a:hover { text-decoration: underline; }
+
+    /* footer */
+    .site-footer {
+      margin-top: 8px;
+      background: #6b6b59;
+      color: #fff;
+      text-align: center;
+      padding: 12px 14px;
+      font-size: 13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .frame { width: 96%; }
+      .content { grid-template-columns: 1fr; }
+      .main { border-right: none; }
+      .sidebar { order: 2; }
+      .header-title .big { font-size:34px; letter-spacing:14px; }
+      .header-title { left:18px; top:12px; }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="page-bg">
+    <div class="frame">
 
+      <!-- Header: inline SVG artwork + positioned text -->
+      <header class="site-header" role="banner" aria-label="Page header: nature">
+        <div class="header-wrap" aria-hidden="false">
+          <!-- SVG recreates left dark leafy silhouettes blended into a warm right-hand leaf texture.
+               The SVG is crafted to scale and to visually match the provided sample as closely as possible. -->
+          <svg class="header-svg" viewBox="0 0 1600 300" preserveAspectRatio="xMidYMid slice"
+               xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Autumn leaves header graphic">
+            <defs>
+              <!-- A stylized leaf path used to compose silhouettes -->
+              <path id="leaf" d="M8 2 C 22 12, 40 16, 60 16 C 44 30, 34 46, 18 54 C 12 36, 8 22, 8 2 Z" />
 
+              <!-- Left dark gradient -->
+              <linearGradient id="leftDark" x1="0" x2="1">
+                <stop offset="0" stop-color="#0c110b"/>
+                <stop offset="1" stop-color="#232a20"/>
+              </linearGradient>
 
+              <!-- Warm right gradient -->
+              <linearGradient id="warmGrad" x1="0" x2="1">
+                <stop offset="0" stop-color="#c77b12"/>
+                <stop offset="0.3" stop-color="#f2d66a"/>
+                <stop offset="1" stop-color="#b06b14"/>
+              </linearGradient>
+
+              <!-- subtle noise/texture filter for right side -->
+              <filter id="grain" x="0" y="0" width="100%" height="100%">
+                <feTurbulence baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="t"/>
+                <feColorMatrix type="saturate" values="0.3" in="t" result="t2"/>
+                <feBlend in="SourceGraphic" in2="t2" mode="overlay"/>
+              </filter>
+
+              <!-- light scratches for realism -->
+              <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="1.2" />
+              </filter>
+
+            </defs>
+
+            <!-- Left block: dark background with layered leaf silhouettes -->
+            <rect x="0" y="0" width="630" height="300" fill="url(#leftDark)"/>
+            <g transform="translate(10,20)" fill="#131813" opacity="0.98">
+              <use href="#leaf" x="0" y="0" transform="scale(3.0) rotate(-18 40 20)"/>
+              <use href="#leaf" x="90" y="-6" transform="scale(2.6) rotate(8 120 40)"/>
+              <use href="#leaf" x="170" y="8" transform="scale(2.8) rotate(-12 200 50)"/>
+              <use href="#leaf" x="250" y="-4" transform="scale(3.2) rotate(18 300 40)"/>
+              <use href="#leaf" x="330" y="10" transform="scale(2.4) rotate(-6 380 40)"/>
+            </g>
+
+            <!-- subtle overlay of small leaves to add depth -->
+            <g transform="translate(40,40)" fill="#22291f" opacity="0.65">
+              <use href="#leaf" x="420" y="12" transform="scale(1.6) rotate(-22 480 40)"/>
+              <use href="#leaf" x="520" y="-2" transform="scale(1.8) rotate(6 560 20)"/>
+            </g>
+
+            <!-- Blend band between left and right to smooth transition -->
+            <rect x="600" y="0" width="100" height="300" fill="rgba(0,0,0,0.24)"/>
+
+            <!-- Right block: warm textured area -->
+            <g transform="translate(700,0)">
+              <rect x="0" y="0" width="900" height="300" fill="url(#warmGrad)"/>
+              <!-- organic blotches -->
+              <g opacity="0.55" filter="url(#grain)">
+                <ellipse cx="140" cy="70" rx="96" ry="38" fill="#8a3f08" opacity="0.16"/>
+                <ellipse cx="360" cy="110" rx="140" ry="60" fill="#8b3f08" opacity="0.20"/>
+                <ellipse cx="580" cy="40" rx="110" ry="50" fill="#7a3206" opacity="0.14"/>
+                <ellipse cx="820" cy="160" rx="140" ry="70" fill="#7a3206" opacity="0.16"/>
+              </g>
+
+              <!-- stylized leaf silhouettes over warm area to simulate photographed leaves -->
+              <g transform="translate(20,0)" opacity="0.95">
+                <path d="M60 22 C 80 36 106 44 132 44 C 112 64 96 92 68 110 C 56 76 44 46 60 22 Z"
+                      fill="#41270a" opacity="0.92"/>
+                <path d="M220 6 C 270 46 328 78 412 86 C 384 120 348 160 284 170 C 264 130 240 84 220 6 Z"
+                      fill="#4a2c09" opacity="0.92"/>
+                <path d="M460 12 C 540 56 620 86 740 96 C 712 140 660 188 560 198 C 540 154 512 98 460 12 Z"
+                      fill="#341f06" opacity="0.92"/>
+                <path d="M860 40 C 920 86 1004 118 1080 128 C 1040 168 1000 210 920 214 C 900 168 882 112 860 40 Z"
+                      fill="#4b2d06" opacity="0.92"/>
+              </g>
+            </g>
+
+            <!-- soft vignette to tie overall header -->
+            <rect x="0" y="0" width="100%" height="100%" fill="black" opacity="0.10"/>
+
+            <!-- light scratches for texture realism -->
+            <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1" fill="none">
+              <path d="M 540 22 C 640 60 720 44 840 38" />
+              <path d="M 820 28 C 920 72 1050 56 1160 46" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- title text positioned over the dark left area to match the sample
+             Big spaced letters for N A T U R E and the subtitle below in yellow -->
+        <div class="header-title" aria-hidden="true">
+          <span class="big">N A T U R E</span>
+          <span class="subtitle">THE PHYSICAL UNIVERSE</span>
+        </div>
+      </header>
+
+      <!-- Pale seam strip under header (thin pale band with a faint dotted line on the right) -->
+      <div class="seam" aria-hidden="true">
+        <svg viewBox="0 0 1600 26" preserveAspectRatio="xMidYMid slice"
+             xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+          <defs>
+            <linearGradient id="stripGrad" x1="0" x2="1">
+              <stop offset="0" stop-color="#f4e9b5"/>
+              <stop offset="0.5" stop-color="#f7edc5"/>
+              <stop offset="1" stop-color="#efe0a0"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="100%" height="100%" fill="url(#stripGrad)"/>
+          <!-- faint dotted vertical rule (like the screenshot) -->
+          <g stroke="#b99a45" stroke-width="1" opacity="0.45">
+            <line x1="1530" y1="3" x2="1530" y2="23" stroke-dasharray="2,6"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- ---------- Main content + sidebar ---------- -->
+      <div class="content">
+        <main class="main" role="main">
+          <h2 class="section-title">NATURE</h2>
+
+          <p class="lead">
+            Nature, in the broadest sense, is the natural world, physical universe, material world or material universe.
+            "Nature" refers to the phenomena of the physical world, and also to life in general.
+          </p>
+
+          <h3>EARTH</h3>
+          <p>
+            Earth (or, "the earth") the fifth largest planet in the solar system, third in order of distance from the Sun.
+            It is the largest of its planetary system's terrestrial planets and the only place in the universe known to support life.
+          </p>
+
+          <p>
+            The most prominent features of the earth's climate are its two large polar regions, two relatively narrow temperate zones,
+            and a wide equatorial tropical to subtropical region. Precipitation patterns vary widely according to location, ranging from several
+            metres of water per year to less than a millimetre.
+          </p>
+
+          <h3>LIFE</h3>
+          <p>
+            Although there is no universal agreement on the definition of life, scientists generally accept that the biological manifestation
+            of life is characterized by organization, metabolism, growth, adaptation, response to stimuli and reproduction.
+          </p>
+        </main>
+
+        <aside class="sidebar" aria-label="See also sidebar">
+          <div class="see-also">
+            <h4 class="see-title">See also</h4>
+
+            <div class="block">
+              <strong>Science:</strong>
+              <ul>
+                <li><a href="#">Natural history</a></li>
+                <li><a href="#">Natural philosophy</a></li>
+                <li><a href="#">Natural science</a></li>
+              </ul>
+            </div>
+
+            <div class="block">
+              <strong>Philosophy:</strong>
+              <ul>
+                <li><a href="#">Nature (philosophy)</a></li>
+                <li><a href="#">Mother Nature</a></li>
+                <li><a href="#">Naturalism (philosophy)</a></li>
+              </ul>
+            </div>
+
+            <div class="block">
+              <strong>Organizations:</strong>
+              <ul>
+                <li><a href="#">The Nature Conservancy</a></li>
+                <li><a href="#">Nature Detectives</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="site-footer" role="contentinfo">
+        <div>© Copyright 2008 Wikipedia</div>
+      </footer>
+
+    </div>
+  </div>
 </body>
-
 </html>
